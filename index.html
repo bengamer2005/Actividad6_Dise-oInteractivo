@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Sitio Web</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Sitio Web</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -20,6 +20,10 @@
     <a href="#multimedia">Multimedia</a>
     <a href="#graficos">Gráficos</a>
     <a href="#contacto">Contacto</a>
+    <!-- actividad 8 -->
+    <a href="#transiciones">Transiciones</a>
+    <a href="#transformaciones">Transformaciones</a>
+    <a href="#animaciones">Animaciones</a>
 </nav>
 
 <!-- main -->
@@ -29,12 +33,15 @@
     <section id="inicio">
         <h2>Bienvenido</h2>
         <p>
-            Esta página fue creada como parte de una actividad universitaria para practicar
+            Esta página fue creada para cumplir como actividades de una materia universitaria para practicar
             HTML5, CSS y JavaScript. El sitio incluye las secciones básicas de una página web:
             encabezado, navegación, contenido, multimedia, gráficos y un formulario de contacto.
         </p>
     </section>
 
+    <h2 style="font-size: 1.8rem; color: #2c3e50; border-left: 5px solid #3498db; padding-left: 12px; margin-bottom: 16px;">
+        Actividad 6 — Estructura y Multimedia en HTML5
+    </h2>
     <!-- video -->
     <section id="multimedia">
         <h2>Multimedia</h2>
@@ -151,6 +158,90 @@
 
         <button type="submit">Enviar</button>
         </form>
+    </section>
+
+    <h2 style="font-size: 1.8rem; color: #2c3e50; border-left: 5px solid #3498db; padding-left: 12px; margin-bottom: 16px;">
+        Actividad 8 — Transiciones, Transformaciones y Animaciones en CSS
+    </h2>
+
+    <!-- actividad 8 -->
+    <section id="transiciones">
+        <h2>2. Implementación de una transición básica</h2>
+        <p>Tres elementos con transiciones suaves usando transition-duration, transition-timing-function y transition-delay.</p>
+
+        <div class="demo-grid">
+
+            <div class="demo-card">
+                <p class="demo-label">Botón — hover cambia color y tamaño</p>
+                <button class="btn-transition">Pasa el cursor aquí</button>
+                <small>transition-duration: 0.4s · timing: cubic-bezier</small>
+            </div>
+
+            <div class="demo-card">
+                <p class="demo-label">Input — opacidad al hacer clic</p>
+                <input class="input-opacity" type="text" placeholder="Haz clic aquí…"/>
+                <small>opacity 0.3 → 1 · transition-duration: 0.5s</small>
+            </div>
+
+            <div class="demo-card">
+                <p class="demo-label">Fondo — cambia de color al cargar</p>
+                <div class="bg-indicator" id="bgDot">Cargando…</div>
+                <small>transition-delay: 2s · transition-duration: 3s</small>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- transformaciones -->
+    <section id="transformaciones">
+        <h2>3. Uso de transformaciones dinámicas</h2>
+        <p>Desplazamiento con translate, rotación con rotate() en hover, y escalado con scale() al hacer clic.</p>
+
+        <div class="demo-grid">
+
+            <div class="demo-card demo-card--tall">
+                <p class="demo-label">translateX/Y — clic para mover</p>
+                <div class="box-move" id="boxMove">CLICK</div>
+                <small>transform: translateX(100px) translateY(-20px)</small>
+            </div>
+
+            <div class="demo-card">
+                <p class="demo-label">rotate() — hover para rotar</p>
+                <div class="icon-rotate">⬡</div>
+                <small>transform: rotate(180deg) · duration: 0.6s</small>
+            </div>
+
+            <div class="demo-card">
+                <p class="demo-label">scale() — clic para escalar</p>
+                <div class="box-scale" id="boxScale">TAP</div>
+                <small>transform: scale(1.5) · spring easing</small>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- animaciones y nuevos fromularios -->
+    <section id="animaciones">
+        <h2>4. Animaciones como feedback visual</h2>
+        <p>Formulario con animación en el botón de envío y sacudida (@keyframes) en campos con error. Prueba enviando vacío.</p>
+
+        <div class="login-wrap">
+
+            <div class="form-group-anim">
+                <label class="form-label-anim" for="loginEmail">Correo electrónico</label>
+                <input class="form-input-anim" id="loginEmail" type="text" placeholder="usuario@dominio.com" autocomplete="off"/>
+                <p class="error-msg" id="loginEmailErr">✕ Ingresa un correo válido</p>
+            </div>
+
+            <div class="form-group-anim">
+                <label class="form-label-anim" for="loginPass">Contraseña</label>
+                <input class="form-input-anim" id="loginPass" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"/>
+                <p class="error-msg" id="loginPassErr">✕ La contraseña es muy corta</p>
+            </div>
+
+            <button class="btn-submit" id="btnSubmit">Iniciar sesión</button>
+
+        </div>
     </section>
 
 </main>
