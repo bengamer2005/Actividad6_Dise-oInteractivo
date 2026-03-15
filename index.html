@@ -10,244 +10,343 @@
 
 <header>
     <h1>Producción de diseño interactivo</h1>
+    <p>Actividades universitarias — HTML5, CSS y JavaScript</p>
 </header>
 
-<!-- navbar -->
-<nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#multimedia">Multimedia</a>
-    <a href="#graficos">Gráficos</a>
-    <a href="#contacto">Contacto</a>
-    <!-- actividad 8 -->
-    <a href="#transiciones">Transiciones</a>
-    <a href="#transformaciones">Transformaciones</a>
-    <a href="#animaciones">Animaciones</a>
+<!-- navbar principal con ul/li -->
+<nav aria-label="Navegación principal">
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#graficos">Gráficos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <!-- menú desplegable actividad 8 -->
+        <li class="dropdown">
+            <a href="#transiciones" aria-haspopup="true" aria-expanded="false">Actividad 8 ▾</a>
+            <ul class="dropdown-menu" role="menu">
+                <li role="menuitem"><a href="#transiciones">Transiciones</a></li>
+                <li role="menuitem"><a href="#transformaciones">Transformaciones</a></li>
+                <li role="menuitem"><a href="#animaciones">Animaciones</a></li>
+            </ul>
+        </li>
+        <li><a href="#actividad9">Actividad 9</a></li>
+    </ul>
 </nav>
 
-<!-- main -->
-<main>
+<!-- layout principal: contenido + aside -->
+<div class="layout">
 
-    <!-- bienvenida -->
-    <section id="inicio">
-        <h2>Bienvenido</h2>
-        <p>
-            Esta página fue creada para cumplir como actividades de una materia universitaria para practicar
-            HTML5, CSS y JavaScript. El sitio incluye las secciones básicas de una página web:
-            encabezado, navegación, contenido, multimedia, gráficos y un formulario de contacto.
-        </p>
-    </section>
+    <main id="contenido-principal">
 
-    <h2 style="font-size: 1.8rem; color: #2c3e50; border-left: 5px solid #3498db; padding-left: 12px; margin-bottom: 16px;">
-        Actividad 6 — Estructura y Multimedia en HTML5
-    </h2>
-    <!-- video -->
-    <section id="multimedia">
-        <h2>Multimedia</h2>
+        <!-- bienvenida -->
+        <section id="inicio" aria-labelledby="titulo-inicio">
+            <h2 id="titulo-inicio">Bienvenido</h2>
+            <p>
+                Esta página fue creada para cumplir como actividades de una materia universitaria para practicar
+                HTML5, CSS y JavaScript. El sitio incluye las secciones básicas de una página web:
+                encabezado, navegación, contenido, multimedia, gráficos y un formulario de contacto.
+            </p>
+            <!-- navegación contextual dentro del contenido -->
+            <p class="nav-contextual">
+                Ir directamente a:
+                <a href="#multimedia">Multimedia</a> ·
+                <a href="#graficos">Gráficos</a> ·
+                <a href="#contacto">Contacto</a> ·
+                <a href="#transiciones">Actividad 8</a> ·
+                <a href="#actividad9">Actividad 9</a>
+            </p>
+        </section>
 
-        <div class="media-box">
-            <h3>Video</h3>
-            <video controls loop>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4"  type="video/mp4" />
-                <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm" />
-                Tu navegador no soporta video HTML5.
-                <a href="https://www.w3schools.com/html/mov_bbb.mp4">Descargar video</a>
-            </video>
-            <small>Formatos disponibles: MP4 y WebM</small>
-        </div>
+        <h2 class="titulo-actividad">
+            Actividad 6 — Estructura y Multimedia en HTML5
+        </h2>
 
-        <div class="media-box">
-            <h3>Audio</h3>
-            <audio controls loop>
-                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />
-                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg" />
-                Tu navegador no soporta audio HTML5.
-                <a href="https://www.w3schools.com/html/horse.mp3">Descargar audio</a>
-            </audio>
-            <small>Formatos disponibles: MP3 y OGG</small>
-        </div>
-    </section>
+        <!-- video -->
+        <section id="multimedia" aria-labelledby="titulo-multimedia">
+            <h2 id="titulo-multimedia">Multimedia</h2>
 
-    <!-- graficos -->
-    <section id="graficos">
-        <h2>Gráficos y Animaciones</h2>
+            <article class="media-box">
+                <h3>Video</h3>
+                <video controls loop aria-label="Video de demostración Big Buck Bunny">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4"  type="video/mp4" />
+                    <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm" />
+                    Tu navegador no soporta video HTML5.
+                    <a href="https://www.w3schools.com/html/mov_bbb.mp4">Descargar video</a>
+                </video>
+                <small>Formatos disponibles: MP4 y WebM</small>
+            </article>
 
-        <h3 class="subtitle">Canvas — Dibujo interactivo</h3>
-        <p class="hint">Haz clic en el canvas para dibujar círculos de colores.</p>
-        <canvas id="miCanvas" width="600" height="200"></canvas>
+            <article class="media-box">
+                <h3>Audio</h3>
+                <audio controls loop aria-label="Audio de demostración sonido de caballo">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg" />
+                    Tu navegador no soporta audio HTML5.
+                    <a href="https://www.w3schools.com/html/horse.mp3">Descargar audio</a>
+                </audio>
+                <small>Formatos disponibles: MP3 y OGG</small>
+            </article>
+        </section>
 
-        <div class="svg-wrap">
-            <h3 class="subtitle">SVG — Figura animada</h3>
-            <svg width="300" height="150" xmlns="http://www.w3.org/2000/svg">
-                <rect width="300" height="150" fill="#ecf0f1" rx="8"/>
-                <circle cx="30" cy="75" r="20" fill="#2c3e50">
-                <animate attributeName="cx" from="30" to="270" dur="2s" repeatCount="indefinite" direction="alternate"/>
-                <animate attributeName="fill" values="#2c3e50;#e74c3c;#3498db;#2c3e50" dur="2s" repeatCount="indefinite"/>
-                </circle>
-                <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">
-                SVG animado con SMIL
-                </text>
-            </svg>
-        </div>
-    </section>
+        <!-- graficos -->
+        <section id="graficos" aria-labelledby="titulo-graficos">
+            <h2 id="titulo-graficos">Gráficos y Animaciones</h2>
 
-  <!-- formulario -->
-    <section id="contacto">
-        <h2>Formulario de Contacto</h2>
+            <h3 class="subtitle">Canvas — Dibujo interactivo</h3>
+            <p class="hint">Haz clic en el canvas para dibujar círculos de colores.</p>
+            <canvas id="miCanvas" width="600" height="200"
+                role="img"
+                aria-label="Canvas interactivo: haz clic para dibujar círculos de colores">
+            </canvas>
 
-        <div id="mensaje-exito">✔ Mensaje enviado correctamente.</div>
-
-        <form id="miFormulario" novalidate>
-
-        <div class="field">
-            <label for="nombre">Nombre completo *</label>
-            <input
-                type="text" id="nombre" name="nombre"
-                placeholder="Ej: Juan Pérez"
-                required minlength="3" maxlength="80"
-            />
-        </div>
-
-        <div class="field">
-            <label for="email">Correo electrónico *</label>
-            <input
-                type="email" id="email" name="email"
-                placeholder="correo@ejemplo.com"
-                required
-                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-            />
-        </div>
-
-        <div class="field">
-            <label for="telefono">Número de teléfono *</label>
-            <input
-                type="tel" id="telefono" name="telefono"
-                placeholder="Ej: 8112345678"
-                required
-                pattern="[0-9]{10}"
-                maxlength="10"
-            />
-        </div>
-
-        <div class="field">
-            <label>¿Cómo nos encontraste? *</label>
-            <div class="radio-group">
-            <label><input type="radio" name="como" value="redes" required /> Redes sociales</label>
-            <label><input type="radio" name="como" value="amigo" /> Un amigo</label>
-            <label><input type="radio" name="como" value="busqueda" /> Búsqueda en internet</label>
+            <div class="svg-wrap">
+                <h3 class="subtitle">SVG — Figura animada</h3>
+                <svg width="300" height="150" xmlns="http://www.w3.org/2000/svg"
+                     role="img" aria-labelledby="svg-title">
+                    <title id="svg-title">Círculo animado que se desplaza y cambia de color</title>
+                    <rect width="300" height="150" fill="#ecf0f1" rx="8"/>
+                    <circle cx="30" cy="75" r="20" fill="#2c3e50">
+                        <animate attributeName="cx" from="30" to="270" dur="2s" repeatCount="indefinite" direction="alternate"/>
+                        <animate attributeName="fill" values="#2c3e50;#e74c3c;#3498db;#2c3e50" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">
+                        SVG animado con SMIL
+                    </text>
+                </svg>
             </div>
-        </div>
+        </section>
 
-        <div class="field">
-            <label for="mensaje">Mensaje *</label>
-            <textarea
-                id="mensaje" name="mensaje"
-                placeholder="Escribe tu mensaje..."
-                rows="4"
-                required minlength="10" maxlength="500"
-            ></textarea>
-        </div>
+        <!-- formulario -->
+        <section id="contacto" aria-labelledby="titulo-contacto">
+            <h2 id="titulo-contacto">Formulario de Contacto</h2>
 
-        <div class="field check-group">
-            <label>
-            <input type="checkbox" id="terminos" name="terminos" required />
-            Acepto los términos y condiciones *
-            </label>
-        </div>
+            <div id="mensaje-exito" role="alert" aria-live="polite">✔ Mensaje enviado correctamente.</div>
 
-        <button type="submit">Enviar</button>
-        </form>
-    </section>
+            <form id="miFormulario" novalidate aria-label="Formulario de contacto">
 
-    <h2 style="font-size: 1.8rem; color: #2c3e50; border-left: 5px solid #3498db; padding-left: 12px; margin-bottom: 16px;">
-        Actividad 8 — Transiciones, Transformaciones y Animaciones en CSS
-    </h2>
+                <div class="field">
+                    <label for="nombre">Nombre completo *</label>
+                    <input
+                        type="text" id="nombre" name="nombre"
+                        placeholder="Ej: Juan Pérez"
+                        required minlength="3" maxlength="80"
+                        aria-required="true"
+                        aria-describedby="nombre-hint"
+                    />
+                    <small id="nombre-hint" class="field-hint">Mínimo 3 caracteres, máximo 80.</small>
+                </div>
 
-    <!-- actividad 8 -->
-    <section id="transiciones">
-        <h2>2. Implementación de una transición básica</h2>
-        <p>Tres elementos con transiciones suaves usando transition-duration, transition-timing-function y transition-delay.</p>
+                <div class="field">
+                    <label for="email">Correo electrónico *</label>
+                    <input
+                        type="email" id="email" name="email"
+                        placeholder="correo@ejemplo.com"
+                        required
+                        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                        aria-required="true"
+                        aria-describedby="email-hint"
+                    />
+                    <small id="email-hint" class="field-hint">Formato: correo@dominio.com</small>
+                </div>
 
-        <div class="demo-grid">
+                <div class="field">
+                    <label for="telefono">Número de teléfono *</label>
+                    <input
+                        type="tel" id="telefono" name="telefono"
+                        placeholder="Ej: 8112345678"
+                        required
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        aria-required="true"
+                        aria-describedby="tel-hint"
+                    />
+                    <small id="tel-hint" class="field-hint">10 dígitos sin espacios ni guiones.</small>
+                </div>
 
-            <div class="demo-card">
-                <p class="demo-label">Botón — hover cambia color y tamaño</p>
-                <button class="btn-transition">Pasa el cursor aquí</button>
-                <small>transition-duration: 0.4s · timing: cubic-bezier</small>
+                <div class="field">
+                    <label>¿Cómo nos encontraste? *</label>
+                    <div class="radio-group" role="radiogroup" aria-required="true">
+                        <label><input type="radio" name="como" value="redes" required aria-required="true" /> Redes sociales</label>
+                        <label><input type="radio" name="como" value="amigo" /> Un amigo</label>
+                        <label><input type="radio" name="como" value="busqueda" /> Búsqueda en internet</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea
+                        id="mensaje" name="mensaje"
+                        placeholder="Escribe tu mensaje..."
+                        rows="4"
+                        required minlength="10" maxlength="500"
+                        aria-required="true"
+                        aria-describedby="msg-hint"
+                    ></textarea>
+                    <small id="msg-hint" class="field-hint">Entre 10 y 500 caracteres.</small>
+                </div>
+
+                <div class="field check-group">
+                    <label>
+                        <input type="checkbox" id="terminos" name="terminos" required aria-required="true" />
+                        Acepto los términos y condiciones *
+                    </label>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <h2 class="titulo-actividad">
+            Actividad 8 — Transiciones, Transformaciones y Animaciones en CSS
+        </h2>
+
+        <section id="transiciones" aria-labelledby="titulo-transiciones">
+            <h2 id="titulo-transiciones">2. Implementación de una transición básica</h2>
+            <p>Tres elementos con transiciones suaves usando transition-duration, transition-timing-function y transition-delay.</p>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <p class="demo-label">Botón — hover cambia color y tamaño</p>
+                    <button class="btn-transition" aria-label="Botón de demostración de transición hover">Pasa el cursor aquí</button>
+                    <small>transition-duration: 0.4s · timing: cubic-bezier</small>
+                </div>
+                <div class="demo-card">
+                    <p class="demo-label">Input — opacidad al hacer clic</p>
+                    <input class="input-opacity" type="text" placeholder="Haz clic aquí…" aria-label="Campo con transición de opacidad"/>
+                    <small>opacity 0.3 → 1 · transition-duration: 0.5s</small>
+                </div>
+                <div class="demo-card">
+                    <p class="demo-label">Fondo — cambia de color al cargar</p>
+                    <div class="bg-indicator" id="bgDot" aria-live="polite">Cargando…</div>
+                    <small>transition-delay: 2s · transition-duration: 3s</small>
+                </div>
             </div>
+        </section>
 
-            <div class="demo-card">
-                <p class="demo-label">Input — opacidad al hacer clic</p>
-                <input class="input-opacity" type="text" placeholder="Haz clic aquí…"/>
-                <small>opacity 0.3 → 1 · transition-duration: 0.5s</small>
+        <section id="transformaciones" aria-labelledby="titulo-transformaciones">
+            <h2 id="titulo-transformaciones">3. Uso de transformaciones dinámicas</h2>
+            <p>Desplazamiento con translate, rotación con rotate() en hover, y escalado con scale() al hacer clic.</p>
+            <div class="demo-grid">
+                <div class="demo-card demo-card--tall">
+                    <p class="demo-label">translateX/Y — clic para mover</p>
+                    <div class="box-move" id="boxMove" role="button" tabindex="0" aria-pressed="false" aria-label="Caja que se desplaza al hacer clic">CLICK</div>
+                    <small>transform: translateX(100px) translateY(-20px)</small>
+                </div>
+                <div class="demo-card">
+                    <p class="demo-label">rotate() — hover para rotar</p>
+                    <div class="icon-rotate" aria-label="Icono que rota al pasar el cursor" role="img">⬡</div>
+                    <small>transform: rotate(180deg) · duration: 0.6s</small>
+                </div>
+                <div class="demo-card">
+                    <p class="demo-label">scale() — clic para escalar</p>
+                    <div class="box-scale" id="boxScale" role="button" tabindex="0" aria-pressed="false" aria-label="Círculo que escala al hacer clic">TAP</div>
+                    <small>transform: scale(1.5) · spring easing</small>
+                </div>
             </div>
+        </section>
 
-            <div class="demo-card">
-                <p class="demo-label">Fondo — cambia de color al cargar</p>
-                <div class="bg-indicator" id="bgDot">Cargando…</div>
-                <small>transition-delay: 2s · transition-duration: 3s</small>
+        <section id="animaciones" aria-labelledby="titulo-animaciones">
+            <h2 id="titulo-animaciones">4. Animaciones como feedback visual</h2>
+            <p>Formulario con animación en el botón de envío y sacudida (@keyframes) en campos con error. Prueba enviando vacío.</p>
+            <div class="login-wrap">
+                <div class="form-group-anim">
+                    <label class="form-label-anim" for="loginEmail">Correo electrónico</label>
+                    <input class="form-input-anim" id="loginEmail" type="text"
+                        placeholder="usuario@dominio.com" autocomplete="off"
+                        aria-required="true" aria-describedby="loginEmailErr"/>
+                    <p class="error-msg" id="loginEmailErr" role="alert" aria-live="polite">✕ Ingresa un correo válido</p>
+                </div>
+                <div class="form-group-anim">
+                    <label class="form-label-anim" for="loginPass">Contraseña</label>
+                    <input class="form-input-anim" id="loginPass" type="password"
+                        placeholder="Mínimo 6 caracteres" autocomplete="off"
+                        aria-required="true" aria-describedby="loginPassErr"/>
+                    <p class="error-msg" id="loginPassErr" role="alert" aria-live="polite">✕ La contraseña es muy corta</p>
+                </div>
+                <button class="btn-submit" id="btnSubmit" aria-live="polite">Iniciar sesión</button>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- actividad 9 -->
+        <h2 class="titulo-actividad">
+            Actividad 9 — Diseñando una estructura de navegación clara y accesible en HTML5
+        </h2>
 
-    <!-- transformaciones -->
-    <section id="transformaciones">
-        <h2>3. Uso de transformaciones dinámicas</h2>
-        <p>Desplazamiento con translate, rotación con rotate() en hover, y escalado con scale() al hacer clic.</p>
+        <section id="actividad9" aria-labelledby="titulo-act9">
+            <h2 id="titulo-act9">Elementos implementados para la actividad</h2>
+            <p>Se enlistan los puntos realizados para cumplir con esta actividad:</p>
 
-        <div class="demo-grid">
+            <article class="act9-bloque">
+                <h3>Punto 1 — Tipos de navegación y jerarquía</h3>
+                <ul>
+                    <li><strong>Navegación principal:</strong> menú horizontal sticky con <code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code>.</li>
+                    <li><strong>Navegación secundaria:</strong> barra lateral <code>&lt;aside&gt;</code> con enlaces a todas las secciones.</li>
+                    <li><strong>Navegación contextual:</strong> enlaces dentro del párrafo de bienvenida que dirigen a secciones relacionadas.</li>
+                    <li>Jerarquía de encabezados correcta: <code>&lt;h1&gt;</code> en header, <code>&lt;h2&gt;</code> en secciones, <code>&lt;h3&gt;</code> en subsecciones.</li>
+                </ul>
+            </article>
 
-            <div class="demo-card demo-card--tall">
-                <p class="demo-label">translateX/Y — clic para mover</p>
-                <div class="box-move" id="boxMove">CLICK</div>
-                <small>transform: translateX(100px) translateY(-20px)</small>
-            </div>
+            <article class="act9-bloque">
+                <h3>Punto 2 — Interactividad de la navegación</h3>
+                <ul>
+                    <li><strong>Menú desplegable:</strong> el ítem "Actividad 8" despliega un submenú al pasar el cursor o hacer foco.</li>
+                    <li><strong>Scroll suave:</strong> <code>scroll-behavior: smooth</code> en el CSS para todos los enlaces internos.</li>
+                    <li><strong>Enlace activo:</strong> <code>IntersectionObserver</code> en JavaScript detecta la sección visible y aplica la clase <code>.activo</code> al enlace correspondiente del menú.</li>
+                </ul>
+            </article>
 
-            <div class="demo-card">
-                <p class="demo-label">rotate() — hover para rotar</p>
-                <div class="icon-rotate">⬡</div>
-                <small>transform: rotate(180deg) · duration: 0.6s</small>
-            </div>
+            <article class="act9-bloque">
+                <h3>Punto 3 — Estructura HTML5</h3>
+                <ul>
+                    <li>Se agregó <code>&lt;article&gt;</code> dentro de la sección Multimedia para cada bloque de video y audio.</li>
+                    <li>El <code>&lt;nav&gt;</code> ahora usa <code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code> para organizar los enlaces correctamente.</li>
+                    <li>Se agregó una barra lateral <code>&lt;aside&gt;</code> con navegación secundaria y contenido complementario.</li>
+                    <li>Se añadió <code>aria-labelledby</code> a cada <code>&lt;section&gt;</code> apuntando a su <code>&lt;h2&gt;</code> para mejorar la jerarquía semántica.</li>
+                </ul>
+            </article>
 
-            <div class="demo-card">
-                <p class="demo-label">scale() — clic para escalar</p>
-                <div class="box-scale" id="boxScale">TAP</div>
-                <small>transform: scale(1.5) · spring easing</small>
-            </div>
+            <article class="act9-bloque">
+                <h3>Punto 4 — Navegación y accesibilidad</h3>
+                <ul>
+                    <li>Se añadió <code>aria-label</code> al <code>&lt;nav&gt;</code>, al canvas, al SVG y al formulario principal.</li>
+                    <li>El SVG incluye <code>role="img"</code> y <code>&lt;title&gt;</code> para lectores de pantalla.</li>
+                    <li>El canvas tiene <code>role="img"</code> y <code>aria-label</code> descriptivo.</li>
+                    <li>Los campos del formulario tienen <code>aria-required</code> y <code>aria-describedby</code> apuntando a mensajes de ayuda visibles.</li>
+                    <li>El botón de login y los mensajes de error tienen <code>aria-live</code> y <code>role="alert"</code> para anunciar cambios a lectores de pantalla.</li>
+                    <li>Los elementos interactivos <code>.box-move</code> y <code>.box-scale</code> tienen <code>role="button"</code>, <code>tabindex="0"</code> y <code>aria-pressed</code>, y responden a teclado (Enter / Espacio).</li>
+                    <li>El grupo de radio buttons tiene <code>role="radiogroup"</code>.</li>
+                </ul>
+            </article>
 
-        </div>
-    </section>
+        </section>
 
-    <!-- animaciones y nuevos fromularios -->
-    <section id="animaciones">
-        <h2>4. Animaciones como feedback visual</h2>
-        <p>Formulario con animación en el botón de envío y sacudida (@keyframes) en campos con error. Prueba enviando vacío.</p>
+    </main>
 
-        <div class="login-wrap">
+    <!-- barra lateral: navegación secundaria -->
+    <aside aria-label="Navegación secundaria">
+        <h3>Secciones</h3>
+        <nav aria-label="Navegación lateral">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#graficos">Gráficos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#transiciones">Transiciones</a></li>
+                <li><a href="#transformaciones">Transformaciones</a></li>
+                <li><a href="#animaciones">Animaciones</a></li>
+                <li><a href="#actividad9">Actividad 9</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-            <div class="form-group-anim">
-                <label class="form-label-anim" for="loginEmail">Correo electrónico</label>
-                <input class="form-input-anim" id="loginEmail" type="text" placeholder="usuario@dominio.com" autocomplete="off"/>
-                <p class="error-msg" id="loginEmailErr">✕ Ingresa un correo válido</p>
-            </div>
-
-            <div class="form-group-anim">
-                <label class="form-label-anim" for="loginPass">Contraseña</label>
-                <input class="form-input-anim" id="loginPass" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"/>
-                <p class="error-msg" id="loginPassErr">✕ La contraseña es muy corta</p>
-            </div>
-
-            <button class="btn-submit" id="btnSubmit">Iniciar sesión</button>
-
-        </div>
-    </section>
-
-</main>
+</div><!-- fin .layout -->
 
 <!-- footer -->
 <footer>
-    <p>© 2025 Actividad 6 — Todos los derechos reservadosa a Benito Garcia</p>
-    <p>Contacto: <a href="mailto:contacto@misitio.com">garciabenitoleonel@gmail.com</a> | Tel: xx-xxxx-xxxx</p>
+    <p>© 2025 Producción de diseño interactivo — Todos los derechos reservados a Benito Garcia</p>
+    <p>
+        Contacto: <a href="mailto:garciabenitoleonel@gmail.com" aria-label="Enviar correo a Benito Garcia">garciabenitoleonel@gmail.com</a>
+        | Tel: xx-xxxx-xxxx
+    </p>
 </footer>
 
 <script src="script.js"></script>

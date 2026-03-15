@@ -140,3 +140,26 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
         passInput.classList.remove('success');
     }, 3000);
 });
+
+// ── Actividad 9: Enlace activo con IntersectionObserver ──
+const secciones = document.querySelectorAll('section[id]');
+const enlaces   = document.querySelectorAll('nav ul li a');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            enlaces.forEach(a => a.classList.remove('activo'));
+            const enlaceActivo = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+            if (enlaceActivo) enlaceActivo.classList.add('activo');
+        }
+    });
+}, { threshold: 0.3 });
+
+secciones.forEach(sec => observer.observe(sec));
+
+// ── Actividad 9: aria-expanded en dropdown ──
+const dropdownToggle = document.querySelector('.dropdown > a');
+dropdownToggle.addEventListener('focus', () => dropdownToggle.setAttribute('aria-expanded', 'true'));
+dropdownToggle.addEventListener('blur',  () => {
+    setTimeout(() => dropdownToggle.setAttribute('aria-expanded', 'false'), 200);
+});
