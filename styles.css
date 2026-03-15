@@ -34,6 +34,9 @@ nav {
     justify-content: center;
     gap: 20px;
     padding: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
@@ -45,6 +48,12 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+/* .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+} */
 
 /* ── MAIN ── */
 main {
