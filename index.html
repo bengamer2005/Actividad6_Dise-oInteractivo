@@ -26,24 +26,6 @@
             90%       { transform: translateX(3px); }
         }
 
-        .item-correo          { animation: fadeSlideIn 0.3s ease forwards; }
-        .item-correo.saliendo { animation: fadeSlideOut 0.3s ease forwards; }
-
-        .error-msg {
-            display: block;
-            font-size: 0.78rem;
-            color: #c0392b;
-            min-height: 16px;
-            opacity: 0;
-            transform: translateY(-4px);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-        }
-        .error-msg.visible { opacity: 1; transform: translateY(0); }
-
-        /* Nav dropdown desktop */
-        .dropdown:hover .dropdown-menu,
-        .dropdown:focus-within .dropdown-menu { display: block; }
-
         /* Nav enlace activo */
         nav a.activo {
             background-color: #1a252f;
@@ -51,91 +33,38 @@
             border-bottom: 2px solid #85c1e9;
         }
 
-        /* Validación */
-        .campo-error { border-color: #c0392b !important; animation: shake 0.4s ease; }
-        .campo-ok    { border-color: #27ae60 !important; }
+        /* Nav dropdown desktop */
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu { display: block; }
 
-        .editar-input {
-            flex: 1;
-            padding: 4px 8px;
-            border: 1px solid #2c3e50;
-            border-radius: 4px;
-            font-size: 0.92rem;
-            outline: none;
-            font-family: inherit;
-        }
+        /* ── Canvas / SVG act14 ── */
+        canvas, svg { display: block; }
 
-        /* ── Efecto FOCUS-HIGHLIGHT de estructuras ── */
-        /*
-          Cuando body tiene .modo-foco, todos los elementos
-          estructurales quedan en gris. El elemento con .en-foco
-          recupera su apariencia y queda sobre el overlay.
-        */
-        body.modo-foco::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 200;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        body.modo-foco .estructura-foco {
-            position: relative;
-            z-index: 201;
-            box-shadow: 0 0 0 4px #85c1e9, 0 8px 32px rgba(0,0,0,0.4);
-            transition: box-shadow 0.3s ease;
-        }
-
-        /* Badge flotante que indica qué estructura está activa */
-        #foco-badge {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Tooltip gráfica */
+        #grafica-tooltip {
+            position: absolute;
             background: #2c3e50;
             color: white;
-            padding: 8px 20px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            z-index: 202;
-            display: none;
-            gap: 10px;
-            align-items: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            white-space: nowrap;
-        }
-        #foco-badge.visible { display: flex; }
-        #foco-badge button {
-            background: #85c1e9;
-            color: #1a252f;
-            border: none;
-            border-radius: 999px;
-            padding: 3px 12px;
             font-size: 0.78rem;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            pointer-events: none;
+            display: none;
+            white-space: nowrap;
+            z-index: 10;
         }
-        #foco-badge button:hover { background: #aed6f1; }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-gray-50">
 
-<!-- Badge foco flotante -->
-<div id="foco-badge" role="status" aria-live="polite">
-    <span id="foco-nombre">Header</span>
-    <button id="btnCerrarFoco" aria-label="Quitar foco de estructura">✕ Quitar foco</button>
-</div>
-
 <!-- ── HEADER ── -->
-<header id="struct-header" class="estructura-foco bg-[#2c3e50] text-white text-center py-5 px-4">
+<header class="bg-[#2c3e50] text-white text-center py-5 px-4">
     <h1 class="text-2xl sm:text-3xl font-bold">Producción de diseño interactivo</h1>
     <p class="mt-1 text-sm text-[#bdc3c7]">Actividades universitarias — HTML5, CSS y JavaScript</p>
 </header>
 
 <!-- ── NAV ── -->
-<nav id="struct-nav" class="estructura-foco bg-[#34495e] sticky top-0 z-50" aria-label="Navegación principal">
+<nav class="bg-[#34495e] sticky top-0 z-50" aria-label="Navegación principal">
     <div class="flex items-center justify-between px-4 py-2">
 
         <!-- Links desktop -->
@@ -149,28 +78,28 @@
             </li>
 
             <li class="dropdown relative">
-                <a href="#lista"
+                <a href="#act13"
                    aria-haspopup="true" aria-expanded="false"
                    class="block text-white text-sm px-3 py-1.5 rounded transition-colors hover:bg-[#2c3e50] focus:outline-none focus:ring-2 focus:ring-[#85c1e9]">
-                    Actividad 11 ▾
+                    Actividad 13 ▾
                 </a>
-                <ul class="dropdown-menu hidden absolute top-full left-0 bg-[#2c3e50] list-none py-1.5 rounded shadow-lg min-w-[160px] z-50">
-                    <li><a href="#lista"      class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Lista dinámica</a></li>
-                    <li><a href="#formulario" class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Formulario</a></li>
+                <ul class="dropdown-menu hidden absolute top-full left-0 bg-[#2c3e50] list-none py-1.5 rounded shadow-lg min-w-[180px] z-50">
+                    <li><a href="#act13-sonido" class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Sonido</a></li>
+                    <li><a href="#act13-video"  class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Video</a></li>
                 </ul>
             </li>
 
             <li class="dropdown relative">
-                <a href="#act12"
+                <a href="#act14"
                    aria-haspopup="true" aria-expanded="false"
                    class="block text-white text-sm px-3 py-1.5 rounded transition-colors hover:bg-[#2c3e50] focus:outline-none focus:ring-2 focus:ring-[#85c1e9]">
-                    Actividad 12 ▾
+                    Actividad 14 ▾
                 </a>
-                <ul class="dropdown-menu hidden absolute top-full left-0 bg-[#2c3e50] list-none py-1.5 rounded shadow-lg min-w-[180px] z-50">
-                    <li><a href="#act12-estructura"  class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Diseño de interfaz</a></li>
-                    <li><a href="#act12-responsivo"  class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Diseño responsivo</a></li>
-                    <li><a href="#act12-accesible"   class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Diseño accesible</a></li>
-                    <li><a href="#act12-framework"   class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Framework</a></li>
+                <ul class="dropdown-menu hidden absolute top-full left-0 bg-[#2c3e50] list-none py-1.5 rounded shadow-lg min-w-[200px] z-50">
+                    <li><a href="#act14-cuadrados"  class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Cuadrados</a></li>
+                    <li><a href="#act14-elipses"    class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Elipses</a></li>
+                    <li><a href="#act14-arbol"      class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Árbol</a></li>
+                    <li><a href="#act14-grafica"    class="block text-white text-sm px-4 py-2 hover:bg-[#34495e] transition-colors">Gráfica de negocios</a></li>
                 </ul>
             </li>
 
@@ -182,7 +111,6 @@
                 aria-label="Abrir menú de navegación"
                 aria-expanded="false"
                 aria-controls="menu-mobile">
-            <!-- Icono hamburguesa / X -->
             <svg id="ico-hamburguesa" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
@@ -200,18 +128,19 @@
         class="hidden sm:hidden flex-col list-none px-4 pb-3 gap-1 bg-[#2c3e50]"
         aria-label="Menú de navegación móvil">
         <li><a href="#inicio"           class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Inicio</a></li>
-        <li><a href="#lista"            class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Lista dinámica</a></li>
-        <li><a href="#formulario"       class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Formulario</a></li>
-        <li><a href="#act12"            class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Actividad 12</a></li>
-        <li><a href="#act12-estructura" class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Diseño de interfaz</a></li>
-        <li><a href="#act12-responsivo" class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Diseño responsivo</a></li>
-        <li><a href="#act12-accesible"  class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Diseño accesible</a></li>
-        <li><a href="#act12-framework"  class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Framework</a></li>
+        <li><a href="#act13"            class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Actividad 13</a></li>
+        <li><a href="#act13-sonido"     class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Sonido</a></li>
+        <li><a href="#act13-video"      class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Video</a></li>
+        <li><a href="#act14"            class="block text-white text-sm px-3 py-2 rounded hover:bg-[#34495e] transition-colors">Actividad 14</a></li>
+        <li><a href="#act14-cuadrados"  class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Cuadrados</a></li>
+        <li><a href="#act14-elipses"    class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Elipses</a></li>
+        <li><a href="#act14-arbol"      class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Árbol</a></li>
+        <li><a href="#act14-grafica"    class="block text-white text-sm px-3 py-2 pl-6 rounded hover:bg-[#34495e] transition-colors text-[#bdc3c7]">↳ Gráfica de negocios</a></li>
     </ul>
 </nav>
 
 <!-- ── MAIN ── -->
-<main id="struct-main" class="estructura-foco max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-8" id="contenido-principal">
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-8" id="contenido-principal">
 
     <!-- BIENVENIDA -->
     <section id="inicio" aria-labelledby="titulo-inicio" class="mb-12">
@@ -220,258 +149,187 @@
         </h2>
         <p class="leading-relaxed mb-2 text-sm sm:text-base">
             Esta página fue creada para cumplir como actividades de una materia universitaria para practicar
-            HTML5, CSS y JavaScript. El sitio incluye las secciones necesarias para cumplir con las actividades 11 y 12.
+            HTML5, CSS y JavaScript. El sitio incluye las secciones necesarias para cumplir con las actividades 13 y 14.
         </p>
         <p class="mt-3 text-sm text-gray-500">
             Ir directamente a:
-            <a href="#lista"      class="text-[#2980b9] hover:underline">Lista dinámica</a> ·
-            <a href="#formulario" class="text-[#2980b9] hover:underline">Formulario</a> ·
-            <a href="#act12"      class="text-[#2980b9] hover:underline">Actividad 12</a>
+            <a href="#act13" class="text-[#2980b9] hover:underline">Actividad 13</a> ·
+            <a href="#act14" class="text-[#2980b9] hover:underline">Actividad 14</a>
         </p>
     </section>
 
-    <!-- Separador actividad 11 -->
-    <h2 class="text-xl sm:text-2xl font-bold text-[#2c3e50] border-l-[5px] border-[#3498db] pl-3 mb-5 mt-2">
-        Actividad 11 — Desarrollo de una interfaz web dinámica con JavaScript avanzado
+    <!-- ═══════════════════════════════════════════════════════
+         ACTIVIDAD 13 — Multimedia: audio y video en HTML5
+    ════════════════════════════════════════════════════════ -->
+    <h2 id="act13" class="text-xl sm:text-2xl font-bold text-[#2c3e50] border-l-[5px] border-[#3498db] pl-3 mb-5 mt-2">
+        Actividad 13 — Integración de audio y video en HTML5
     </h2>
 
-    <!-- ── LISTA DINÁMICA ── -->
-    <section id="lista" aria-labelledby="titulo-lista" class="mb-12">
-        <h2 id="titulo-lista" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
-            Lista dinámica de correos
+    <!-- PUNTO 1 — Sonido -->
+    <section id="act13-sonido" aria-labelledby="titulo-act13-sonido" class="mb-12">
+        <h2 id="titulo-act13-sonido" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 1 — Sonido
         </h2>
         <p class="leading-relaxed mb-4 text-sm sm:text-base">
-            Agrega correos electrónicos a la lista. Puedes editarlos, eliminarlos o usarlos para llenar el formulario.
+            El siguiente reproductor contiene un sonido generado digitalmente con <strong>Tone.js</strong> (sintetizador de frecuencias).
+            Utiliza los controles nativos del navegador: reproducir, pausar, ajustar volumen y cambiar posición en la línea de tiempo.
         </p>
 
-        <div class="max-w-xl mb-4">
-            <div class="flex flex-wrap items-end gap-3">
-                <div class="flex flex-col gap-1 flex-1 min-w-[200px]">
-                    <label for="nuevoCorreo" class="font-bold text-sm">Nuevo correo electrónico</label>
-                    <input type="email" id="nuevoCorreo" placeholder="correo@ejemplo.com"
-                           aria-label="Nuevo correo electrónico"
-                           class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#2c3e50] focus:ring-2 focus:ring-[#2c3e50]/20 transition" />
-                    <small id="lista-error" class="error-msg" role="alert"></small>
-                </div>
-                <button id="btnAgregar" aria-label="Agregar correo"
-                        class="px-4 py-2 bg-[#2c3e50] text-white text-sm rounded cursor-pointer hover:bg-[#1a252f] hover:scale-105 transition-all whitespace-nowrap self-end">
-                    + Agregar
+        <!-- Reproductor de audio generado con Web Audio API / Tone.js -->
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm max-w-xl mb-4">
+            <audio id="reproductorAudio" controls class="w-full"
+                   aria-label="Reproductor de audio: tonada sintetizada">
+                <!-- El archivo de audio se genera dinámicamente por JavaScript -->
+                Tu navegador no soporta el elemento <code>audio</code>.
+            </audio>
+            <div class="mt-3 flex flex-wrap gap-2">
+                <button id="btnGenerarSonido"
+                        class="px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer">
+                    Generar y cargar sonido
                 </button>
+                <span id="audio-status" class="self-center text-xs text-gray-400 italic"></span>
             </div>
         </div>
-
-        <ul id="listaCorreos" aria-label="Lista de correos" aria-live="polite"
-            class="max-w-xl flex flex-col gap-2 list-none p-0"></ul>
-
-        <p id="lista-vacia" class="text-sm text-gray-400 italic max-w-xl mt-1">
-            No hay correos en la lista. ¡Agrega uno!
-        </p>
     </section>
 
-    <!-- ── FORMULARIO ── -->
-    <section id="formulario" aria-labelledby="titulo-formulario" class="mb-12">
-        <h2 id="titulo-formulario" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-4">
-            Formulario
-        </h2>
-
-        <div id="resumen-envio" role="alert" aria-live="polite" style="display:none;"
-             class="bg-[#d5f5e3] border border-[#27ae60] text-[#1e8449] p-4 rounded mb-4 max-w-xl">
-            <h3 class="font-semibold mb-3 text-base">Mensaje enviado correctamente</h3>
-            <div id="resumen-datos" class="text-sm leading-8"></div>
-            <button id="btnNuevoEnvio"
-                    class="mt-3 px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer">
-                Nuevo mensaje
-            </button>
-        </div>
-
-        <form id="miFormulario" novalidate aria-label="Formulario de contacto" class="flex flex-col gap-4 max-w-xl">
-
-            <div class="flex flex-col gap-1">
-                <label for="nombre" class="font-bold text-sm">Nombre completo *</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez"
-                       required minlength="3" maxlength="80" aria-required="true"
-                       aria-describedby="nombre-hint nombre-err"
-                       class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#2c3e50] focus:ring-2 focus:ring-[#2c3e50]/20 transition" />
-                <small id="nombre-hint" class="text-xs text-gray-400">Mínimo 3 caracteres, máximo 80.</small>
-                <small id="nombre-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <label for="email" class="font-bold text-sm">Correo electrónico *</label>
-                <div class="flex flex-wrap gap-2 items-center">
-                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"
-                           required aria-required="true" aria-describedby="email-hint email-err"
-                           class="flex-1 min-w-[160px] px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#2c3e50] focus:ring-2 focus:ring-[#2c3e50]/20 transition" />
-                    <button type="button" id="btnUsarLista" aria-haspopup="listbox" aria-expanded="false"
-                            class="px-3 py-2 bg-[#2c3e50] text-white text-xs rounded hover:bg-[#1a252f] transition cursor-pointer whitespace-nowrap">
-                        Usar de lista ▾
-                    </button>
-                </div>
-                <div id="dropdownLista" role="listbox" aria-label="Seleccionar correo de la lista" hidden
-                     class="mt-1 bg-white border border-[#2c3e50] rounded shadow-lg overflow-hidden max-w-sm"></div>
-                <small id="email-hint" class="text-xs text-gray-400">Formato: correo@dominio.com</small>
-                <small id="email-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <label for="telefono" class="font-bold text-sm">Número de teléfono *</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 8112345678"
-                       required pattern="[0-9]{10}" maxlength="10" aria-required="true"
-                       aria-describedby="tel-hint tel-err"
-                       class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#2c3e50] focus:ring-2 focus:ring-[#2c3e50]/20 transition" />
-                <small id="tel-hint" class="text-xs text-gray-400">10 dígitos sin espacios ni guiones.</small>
-                <small id="tel-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <span class="font-bold text-sm">¿Cómo nos encontraste? *</span>
-                <div class="flex flex-wrap gap-4" role="radiogroup" aria-required="true">
-                    <label class="flex items-center gap-1.5 text-sm font-normal cursor-pointer">
-                        <input type="radio" name="como" value="redes" aria-required="true" class="accent-[#2c3e50]" /> Redes sociales
-                    </label>
-                    <label class="flex items-center gap-1.5 text-sm font-normal cursor-pointer">
-                        <input type="radio" name="como" value="amigo" class="accent-[#2c3e50]" /> Un amigo
-                    </label>
-                    <label class="flex items-center gap-1.5 text-sm font-normal cursor-pointer">
-                        <input type="radio" name="como" value="busqueda" class="accent-[#2c3e50]" /> Búsqueda en internet
-                    </label>
-                </div>
-                <small id="como-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <label for="mensaje" class="font-bold text-sm">Mensaje *</label>
-                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." rows="4"
-                          required minlength="10" maxlength="500" aria-required="true"
-                          aria-describedby="msg-hint msg-err"
-                          class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#2c3e50] focus:ring-2 focus:ring-[#2c3e50]/20 transition resize-y"></textarea>
-                <small id="msg-hint" class="text-xs text-gray-400">Entre 10 y 500 caracteres.</small>
-                <small id="msg-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <label class="flex items-center gap-2 text-sm font-normal cursor-pointer">
-                    <input type="checkbox" id="terminos" name="terminos" required aria-required="true"
-                           class="accent-[#2c3e50] w-4 h-4 cursor-pointer" />
-                    Acepto los términos y condiciones *
-                </label>
-                <small id="terminos-err" class="error-msg" role="alert"></small>
-            </div>
-
-            <button type="submit"
-                    class="w-fit px-6 py-2.5 bg-[#2c3e50] text-white text-base rounded hover:bg-[#1a252f] transition cursor-pointer">
-                Enviar
-            </button>
-        </form>
-    </section>
-
-    <!-- ACTIVIDAD 12 -->
-    <h2 id="act12" class="text-xl sm:text-2xl font-bold text-[#2c3e50] border-l-[5px] border-[#3498db] pl-3 mb-5 mt-2">
-        Actividad 12 — Creación de interfaces de usuario adaptables y responsivas
-    </h2>
-
-    <!-- PUNTO 2 — Diseño de la interfaz / Focus de estructuras -->
-    <section id="act12-estructura" aria-labelledby="titulo-act12-estructura" class="mb-12">
-        <h2 id="titulo-act12-estructura" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
-            Punto 2 — Diseño de la interfaz
+    <!-- PUNTO 2 — Video -->
+    <section id="act13-video" aria-labelledby="titulo-act13-video" class="mb-12">
+        <h2 id="titulo-act13-video" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 2 — Video
         </h2>
         <p class="leading-relaxed mb-4 text-sm sm:text-base">
-            La página está compuesta por estructuras semánticas bien definidas: <strong>header</strong>, <strong>nav</strong>,
-            <strong>main</strong> y <strong>footer</strong>. Cada una cumple un rol específico en el layout y
-            se adapta al tamaño de la pantalla.
+            El siguiente video fue generado directamente en el navegador con la <strong>Canvas API</strong> y
+            <strong>MediaRecorder</strong>. Muestra una animación de partículas en movimiento.
+            Incluye controles de reproducción, tamaño definido y un póster de carga.
         </p>
 
-        <!-- Botones de foco -->
-        <div class="flex flex-wrap gap-3" role="group" aria-label="Resaltar estructuras de la página">
-            <button
-                class="btn-foco px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#85c1e9]"
-                data-estructura="struct-header"
-                data-nombre="&lt;header&gt; — Encabezado"
-                aria-pressed="false">
-                &lt;header&gt;
-            </button>
-            <button
-                class="btn-foco px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#85c1e9]"
-                data-estructura="struct-nav"
-                data-nombre="&lt;nav&gt; — Navegación"
-                aria-pressed="false">
-                &lt;nav&gt;
-            </button>
-            <button
-                class="btn-foco px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#85c1e9]"
-                data-estructura="struct-main"
-                data-nombre="&lt;main&gt; — Contenido principal"
-                aria-pressed="false">
-                &lt;main&gt;
-            </button>
-            <button
-                class="btn-foco px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#85c1e9]"
-                data-estructura="struct-footer"
-                data-nombre="&lt;footer&gt; — Pie de página"
-                aria-pressed="false">
-                &lt;footer&gt;
-            </button>
+        <!-- Generador de video -->
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm max-w-xl mb-4">
+
+            <!-- Canvas oculto donde se dibuja la animación -->
+            <canvas id="canvasVideo" width="560" height="315" class="hidden" aria-hidden="true"></canvas>
+
+            <!-- Video con póster, controles y dimensiones definidas -->
+            <video id="reproductorVideo"
+                   controls
+                   width="560"
+                   height="315"
+                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='315'%3E%3Crect width='560' height='315' fill='%232c3e50'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2385c1e9' font-size='20' font-family='sans-serif'%3EHaz clic en Generar video%3C/text%3E%3C/svg%3E"
+                   class="w-full max-w-xl rounded border border-gray-200"
+                   aria-label="Reproductor de video: animación de partículas generada en Canvas">
+                Tu navegador no soporta el elemento <code>video</code>.
+            </video>
+
+            <div class="mt-3 flex flex-wrap gap-2 items-center">
+                <button id="btnGenerarVideo"
+                        class="px-4 py-2 bg-[#2c3e50] text-white text-sm rounded hover:bg-[#1a252f] hover:scale-105 transition-all cursor-pointer">
+                    Generar video (3 s)
+                </button>
+                <div id="video-progress-wrap" class="hidden items-center gap-2">
+                    <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div id="video-progress-bar" class="h-full bg-[#3498db] transition-all duration-200" style="width:0%"></div>
+                    </div>
+                    <span id="video-status" class="text-xs text-gray-500 italic">Grabando…</span>
+                </div>
+            </div>
         </div>
-        <p class="mt-3 text-xs text-gray-400 italic">
-            Al hacer clic, el resto de la página se oscurece y la estructura seleccionada queda resaltada con un borde azul.
-        </p>
     </section>
 
-    <!-- PUNTO 3 — Diseño responsivo / Menú hamburguesa -->
-    <section id="act12-responsivo" aria-labelledby="titulo-act12-responsivo" class="mb-12">
-        <h2 id="titulo-act12-responsivo" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
-            Punto 3 — Diseño responsivo
+    <!-- ═══════════════════════════════════════════════════════
+         ACTIVIDAD 14 — Gráficos con Canvas y SVG
+    ════════════════════════════════════════════════════════ -->
+    <h2 id="act14" class="text-xl sm:text-2xl font-bold text-[#2c3e50] border-l-[5px] border-[#3498db] pl-3 mb-5 mt-2">
+        Actividad 14 — Gráficos 2D con Canvas y SVG
+    </h2>
+
+    <!-- PUNTO 1 — Dos cuadrados verde y rojo -->
+    <section id="act14-cuadrados" aria-labelledby="titulo-act14-cuadrados" class="mb-12">
+        <h2 id="titulo-act14-cuadrados" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 1 — Dos cuadrados: verde y rojo
         </h2>
-        <p class="leading-relaxed mb-3 text-sm sm:text-base">
-            La interfaz usa un enfoque <strong>mobile-first</strong> con Tailwind CSS. El contenido se adapta
-            fluidamente a cualquier tamaño de pantalla:
+        <p class="leading-relaxed mb-4 text-sm sm:text-base">
+            Dibujados con la <strong>Canvas API</strong>. El cuadrado verde usa relleno sólido y
+            el cuadrado rojo usa relleno con borde destacado.
         </p>
-        <ul class="list-disc pl-5 text-sm sm:text-base space-y-2 text-gray-700 mb-4">
-            <li>En pantallas grandes (≥640 px) el menú de navegación se muestra en horizontal con dropdowns.</li>
-            <li>
-                En pantallas pequeñas (&lt;640 px) el menú se reemplaza por un
-                <strong>botón hamburguesa (☰)</strong> en la esquina superior derecha que despliega
-                el menú completo verticalmente.
-            </li>
-            <li>El contenido principal ocupa una sola columna en móvil y se expande con márgenes en escritorio.</li>
-            <li>Tipografía escalable: los títulos usan <code class="bg-gray-100 px-1 rounded text-xs">text-2xl sm:text-3xl</code> para ajustarse al dispositivo.</li>
-            <li>Inputs y botones tienen ancho fluido (<code class="bg-gray-100 px-1 rounded text-xs">w-full</code>, <code class="bg-gray-100 px-1 rounded text-xs">flex-wrap</code>) para no desbordarse en pantallas angostas.</li>
-        </ul>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm inline-block">
+            <canvas id="canvas-cuadrados" width="300" height="150"
+                    role="img" aria-label="Dos cuadrados: uno verde y uno rojo"></canvas>
+        </div>
     </section>
 
-    <!-- PUNTO 4 — Diseño accesible -->
-    <section id="act12-accesible" aria-labelledby="titulo-act12-accesible" class="mb-12">
-        <h2 id="titulo-act12-accesible" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
-            Punto 4 — Diseño inclusivo y accesible
+    <!-- PUNTO 2 — Dos elipses verde y amarillo con intersección -->
+    <section id="act14-elipses" aria-labelledby="titulo-act14-elipses" class="mb-12">
+        <h2 id="titulo-act14-elipses" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 2 — Dos elipses con sección intersectada
         </h2>
-        <p class="leading-relaxed mb-3 text-sm sm:text-base">
-            La interfaz fue construida con accesibilidad como prioridad:
+        <p class="leading-relaxed mb-4 text-sm sm:text-base">
+            Dibujadas con <strong>SVG</strong>. La elipse verde y la amarilla se superponen,
+            y la zona intersectada se resalta con un color diferente usando
+            <code class="bg-gray-100 px-1 rounded text-xs">clipPath</code>.
         </p>
-        <ul class="list-disc pl-5 text-sm sm:text-base space-y-2 text-gray-700">
-            <li><strong>Navegación por teclado:</strong> todos los botones, enlaces e inputs son alcanzables con <kbd class="bg-gray-100 border border-gray-300 px-1 rounded text-xs">Tab</kbd> y activables con <kbd class="bg-gray-100 border border-gray-300 px-1 rounded text-xs">Enter</kbd>.</li>
-            <li><strong>Etiquetas ARIA:</strong> se usan <code class="bg-gray-100 px-1 rounded text-xs">aria-label</code>, <code class="bg-gray-100 px-1 rounded text-xs">aria-required</code>, <code class="bg-gray-100 px-1 rounded text-xs">aria-live</code>, <code class="bg-gray-100 px-1 rounded text-xs">aria-expanded</code> y <code class="bg-gray-100 px-1 rounded text-xs">aria-pressed</code> en los elementos interactivos.</li>
-            <li><strong>Jerarquía semántica:</strong> el documento usa <code class="bg-gray-100 px-1 rounded text-xs">&lt;header&gt;</code>, <code class="bg-gray-100 px-1 rounded text-xs">&lt;nav&gt;</code>, <code class="bg-gray-100 px-1 rounded text-xs">&lt;main&gt;</code>, <code class="bg-gray-100 px-1 rounded text-xs">&lt;section&gt;</code> y <code class="bg-gray-100 px-1 rounded text-xs">&lt;footer&gt;</code> correctamente.</li>
-            <li><strong>Mensajes de error:</strong> los campos inválidos muestran texto descriptivo con <code class="bg-gray-100 px-1 rounded text-xs">role="alert"</code> para lectores de pantalla.</li>
-            <li><strong>Focus visible:</strong> todos los elementos interactivos muestran un anillo de foco (<code class="bg-gray-100 px-1 rounded text-xs">focus:ring-2</code>) claro y contrastante.</li>
-        </ul>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm inline-block">
+            <svg id="svg-elipses" width="320" height="180"
+                 role="img" aria-label="Dos elipses, verde y amarilla, con zona de intersección resaltada">
+                <title>Dos elipses con intersección</title>
+                <defs>
+                    <!-- ClipPath de la elipse verde para recortar la zona de intersección -->
+                    <clipPath id="clip-verde">
+                        <ellipse cx="130" cy="90" rx="100" ry="60"/>
+                    </clipPath>
+                </defs>
+                <!-- Elipse verde -->
+                <ellipse cx="130" cy="90" rx="100" ry="60"
+                         fill="rgba(39,174,96,0.7)" stroke="#1e8449" stroke-width="2"/>
+                <!-- Elipse amarilla -->
+                <ellipse cx="210" cy="90" rx="100" ry="60"
+                         fill="rgba(241,196,15,0.7)" stroke="#d4ac0d" stroke-width="2"/>
+                <!-- Zona de intersección: elipse amarilla recortada al área de la verde -->
+                <ellipse cx="210" cy="90" rx="100" ry="60"
+                         fill="rgba(230,126,34,0.75)" stroke="none"
+                         clip-path="url(#clip-verde)"/>
+                <!-- Etiquetas -->
+                <text x="90"  y="94" font-size="12" fill="white" font-family="sans-serif" text-anchor="middle">Verde</text>
+                <text x="250" y="94" font-size="12" fill="white" font-family="sans-serif" text-anchor="middle">Amarillo</text>
+                <text x="170" y="94" font-size="11" fill="white" font-family="sans-serif" text-anchor="middle">∩</text>
+            </svg>
+        </div>
     </section>
 
-    <!-- PUNTO 5 — Framework -->
-    <section id="act12-framework" aria-labelledby="titulo-act12-framework" class="mb-12">
-        <h2 id="titulo-act12-framework" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
-            Punto 5 — Framework utilizado: Tailwind CSS
+    <!-- PUNTO 3 — Árbol con tronco café y hojas verdes -->
+    <section id="act14-arbol" aria-labelledby="titulo-act14-arbol" class="mb-12">
+        <h2 id="titulo-act14-arbol" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 3 — Árbol: tronco café y hojas verdes
         </h2>
-        <p class="leading-relaxed mb-3 text-sm sm:text-base">
-            Este proyecto usa <strong>Tailwind CSS</strong> como framework de diseño. Tailwind es un framework
-            <em>utility-first</em> que permite construir interfaces directamente en el HTML usando clases predefinidas,
-            sin escribir CSS personalizado para la mayoría de los casos.
+        <p class="leading-relaxed mb-4 text-sm sm:text-base">
+            Figura de un árbol completo dibujada con <strong>Canvas API</strong>.
+            El tronco se dibuja como un rectángulo café y las hojas como triángulos/polígonos verdes apilados.
         </p>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm inline-block">
+            <canvas id="canvas-arbol" width="260" height="280"
+                    role="img" aria-label="Figura de un árbol con tronco café y hojas verdes"></canvas>
+        </div>
+    </section>
+
+    <!-- PUNTO 4 — Gráfica de negocios de líneas -->
+    <section id="act14-grafica" aria-labelledby="titulo-act14-grafica" class="mb-12">
+        <h2 id="titulo-act14-grafica" class="text-xl sm:text-2xl font-semibold text-[#2c3e50] border-b-2 border-[#2c3e50] pb-1 mb-3">
+            Punto 4 — Gráfica de negocios de líneas
+        </h2>
+        <p class="leading-relaxed mb-4 text-sm sm:text-base">
+            Gráfica de líneas con datos de ventas trimestrales, dibujada con <strong>Canvas API</strong>.
+            Incluye ejes, etiquetas, cuadrícula, leyenda y tooltip interactivo al pasar el cursor por los puntos.
+        </p>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative inline-block w-full max-w-2xl">
+            <div id="grafica-tooltip" role="tooltip" aria-live="polite"></div>
+            <canvas id="canvas-grafica" width="580" height="320"
+                    role="img" aria-label="Gráfica de líneas: ventas trimestrales 2023-2024"></canvas>
+        </div>
     </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer id="struct-footer" class="estructura-foco bg-[#2c3e50] text-[#bdc3c7] text-center py-5 px-4 text-sm">
+<!-- ── FOOTER ── -->
+<footer class="bg-[#2c3e50] text-[#bdc3c7] text-center py-5 px-4 text-sm">
     <p class="mb-1">© 2025 Producción de diseño interactivo — Todos los derechos reservados a Benito Garcia</p>
     <p>
         Contacto:
